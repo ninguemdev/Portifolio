@@ -5,6 +5,26 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dionel Sebastião — Desenvolvedor Full Stack</title>
+    <script>
+      // Anti-FOUC: aplica o tema antes da primeira pintura, evitando o flash de
+      // tema errado. Mantenha a chave e a lógica em sincronia com src/lib/theme.ts.
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark')
+          }
+        } catch (e) {
+          /* localStorage indisponível: segue no tema claro padrão. */
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

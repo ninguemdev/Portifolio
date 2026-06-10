@@ -5,7 +5,7 @@
  * Direção de design: "Monolito" (ver docs/DESIGN.md)
  * Tailwind CSS v4 — configuração CSS-first. Os tokens vivem aqui, não num
  * tailwind.config.js. As fontes web (Martian Mono, Geist Sans, JetBrains Mono)
- * são carregadas na Fase 3; até lá os fallbacks abaixo entram em ação.
+ * são auto-hospedadas via @fontsource-variable e importadas em src/main.tsx.
  * ============================================================================
  */
 
@@ -63,10 +63,13 @@
  * -------------------------------------------------------------------------- */
 @theme {
   /* Famílias — o display e o mono compartilham DNA monoespaçado (o "Monolito");
-     o corpo é sans para aliviar a leitura de parágrafos longos. */
-  --font-display: 'Martian Mono', ui-monospace, 'SFMono-Regular', monospace;
-  --font-sans: 'Geist Sans', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+     o corpo é sans para aliviar a leitura de parágrafos longos. Carregadas via
+     @fontsource-variable em src/main.tsx. */
+  --font-display:
+    'Martian Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
+  --font-sans: 'Geist Variable', system-ui, -apple-system, sans-serif;
+  --font-mono:
+    'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
 
   /* Escala tipográfica fluida: min em 320px → max em 1280px, sem saltos. */
   --text-xs: clamp(0.75rem, 0.729rem + 0.104vw, 0.8125rem);

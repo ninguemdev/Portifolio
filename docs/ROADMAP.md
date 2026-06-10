@@ -37,17 +37,19 @@ Legenda: `[x]` concluído · `[ ]` pendente · `[~]` em andamento.
 - [x] Refletir os tokens em `@theme` de `src/index.css`
 - [ ] Commit da direção de design aprovado
 
-## Fase 3 — Estrutura, conteúdo e sistema de temas
+## Fase 3 — Estrutura, conteúdo e sistema de temas 🔄
 
-- [ ] Página única com landmarks: `<header>`, hero, `#sobre`, `#skills`,
-      `#projetos`, `<footer id="contato">`
-- [ ] Dados em `src/data/` (`profile.ts`, `skills.ts`, `projects.ts`)
-- [ ] Sistema de temas: CSS vars + classe no `<html>`, detecção de
+- [x] Página única com landmarks: `<header>`, hero, `#sobre`, `#skills`,
+      `#projetos`, `<footer id="contato">` (+ skip link)
+- [x] Dados em `src/data/` (`profile.ts`, `skills.ts`, `projects.ts`)
+- [x] Sistema de temas: CSS vars + classe no `<html>`, detecção de
       `prefers-color-scheme`, toggle manual, persistência em `localStorage`
-- [ ] Script inline anti-FOUC no `<head>`
-- [ ] `ThemeToggle` com `aria-label` e estado refletido
-- [ ] Conteúdo dos dados inserido nas seções corretas; `[EDITAR]` listados
-- [ ] Sem bibliotecas de componentes prontas
+      (store via `useSyncExternalStore`, compartilhado com o futuro terminal)
+- [x] Script inline anti-FOUC no `<head>`
+- [x] `ThemeToggle` com `aria-label` e `aria-pressed` refletindo o estado
+- [x] Conteúdo dos dados inserido nas seções corretas; `[EDITAR]` listados
+- [x] Fontes web auto-hospedadas (Martian Mono, Geist, JetBrains Mono)
+- [x] Sem bibliotecas de componentes prontas
 - [ ] Commit aprovado
 
 ## Fase 4 — Terminal interativo + animações

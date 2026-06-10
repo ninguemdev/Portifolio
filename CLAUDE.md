@@ -130,13 +130,14 @@ um resumo + o que vem a seguir. **Aguardar OK do Dionel antes de avançar.**
 
 ## Estado atual
 
-**Fases 0–2 concluídas.** Setup e documentação prontos; direção de design
-escolhida: **"Monolito"** — monoespaço editorial, accent vermelhão, o hero inteiro
-é o terminal (que digita a abertura sozinho ao carregar). Fontes: **Martian Mono**
-(display), **Geist Sans** (corpo), **JetBrains Mono** (mono) — ainda a carregar na
-Fase 3. Todos os tokens estão em `@theme` de [`src/index.css`](src/index.css) e
-documentados em [`docs/DESIGN.md`](docs/DESIGN.md).
+**Fases 0–3 concluídas.** Setup, documentação, direção de design **"Monolito"** e
+agora a estrutura: landing page com landmarks semânticos (`<header>` fixo, `<main>`
+com hero + `#sobre`/`#skills`/`#projetos`, `<footer id="contato">`), conteúdo em
+[`src/data/`](src/data/), sistema de temas completo (classe `.dark`, store em
+[`src/lib/theme.ts`](src/lib/theme.ts) via `useSyncExternalStore`, script anti-FOUC
+em [`index.html`](index.html), `ThemeToggle` persistido em `localStorage`) e fontes
+auto-hospedadas via `@fontsource-variable` em [`src/main.tsx`](src/main.tsx).
 
-**Próximo: Fase 3** — estrutura semântica, conteúdo em `src/data/`, sistema de
-temas (classe `.dark`, script anti-FOUC, toggle persistido) e carregamento das
-fontes web.
+O hero é uma versão **estática** do terminal — a interatividade (input, comandos,
+histórico), a digitação de boot e as animações vêm na **Fase 4** (próxima). O
+store de tema já expõe `toggleTheme()` para o comando `theme` do terminal.

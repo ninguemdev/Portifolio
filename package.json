@@ -12,6 +12,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/geist": "^5.2.9",
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@fontsource-variable/martian-mono": "^5.2.7",
     "@tailwindcss/vite": "^4.3.0",
     "motion": "^12.40.0",
     "react": "^19.2.6",

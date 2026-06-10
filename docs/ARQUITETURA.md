@@ -34,6 +34,7 @@ evolui.
 │   ├── components/
 │   │   ├── layout/              # Estrutura da página
 │   │   │   ├── Header.tsx       #   nav fixa enxuta
+│   │   │   ├── Section.tsx      #   casca de seção (espaçamento, título, a11y)
 │   │   │   └── Footer.tsx       #   rodapé/contato (#contato)
 │   │   ├── sections/            # Seções da landing page
 │   │   │   ├── Hero.tsx         #   hero com o terminal
@@ -66,7 +67,7 @@ evolui.
 │   ├── types/
 │   │   └── content.ts           #   tipos de Skill, Project, etc.
 │   ├── App.tsx                  # Composição das seções
-│   ├── main.tsx                 # Bootstrap React
+│   ├── main.tsx                 # Bootstrap React + import das fontes (@fontsource)
 │   └── index.css                # @import tailwind + @theme (tokens) + base
 ├── index.html                   # Inclui o script anti-FOUC de tema no <head>
 ├── vite.config.ts               # Plugins: react + tailwindcss
@@ -85,10 +86,11 @@ evolui.
 
 ### Layout
 
-| Componente | Responsabilidade                                                                                                                 |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `Header`   | Nav fixa enxuta com âncoras para as seções e o `ThemeToggle`. No mobile, navegação sem hamburger que esconda conteúdo relevante. |
-| `Footer`   | Landmark `#contato`. Exibe e-mail, GitHub e LinkedIn como links acessíveis.                                                      |
+| Componente | Responsabilidade                                                                                                                             |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Header`   | Nav fixa enxuta com âncoras para as seções e o `ThemeToggle`. No mobile, navegação sem hamburger que esconda conteúdo relevante.             |
+| `Section`  | Casca padrão de seção: espaçamento/largura, offset de scroll e cabeçalho (`$ comando` + título) que nomeia o landmark via `aria-labelledby`. |
+| `Footer`   | Landmark `#contato`. Exibe e-mail, GitHub e LinkedIn como links acessíveis.                                                                  |
 
 ### Seções
 

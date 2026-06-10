@@ -1,21 +1,36 @@
+import Header from './components/layout/Header'
+import Footer from './components/layout/Footer'
+import Hero from './components/sections/Hero'
+import Sobre from './components/sections/Sobre'
+import Skills from './components/sections/Skills'
+import Projetos from './components/sections/Projetos'
+
 /**
- * Placeholder de transição — valida os design tokens da direção "Monolito"
- * (cores, escala fluida, fontes). A estrutura real da página vem na FASE 3.
+ * Landing page única. Landmarks semânticos: <header> (nav fixa), <main> com o
+ * hero e as seções, e <footer> (#contato). A interatividade do terminal e as
+ * animações chegam na Fase 4.
  */
 function App() {
   return (
-    <main className="bg-bg flex min-h-screen flex-col items-center justify-center gap-4 px-[var(--spacing-gutter)] py-[var(--spacing-section)] text-center">
-      <p className="text-accent font-mono text-sm tracking-wide">
-        dionel@portfolio:~$
-      </p>
-      <h1 className="text-heading font-display text-4xl tracking-tight">
-        Dionel Sebastião
-      </h1>
-      <p className="text-muted max-w-prose text-lg">
-        Direção de design <strong className="text-text">Monolito</strong>{' '}
-        aplicada. Tokens de cor, tipografia fluida e motion definidos.
-      </p>
-    </main>
+    <>
+      <a
+        href="#sobre"
+        className="bg-accent text-accent-contrast sr-only z-[100] rounded-md px-4 py-2 font-mono text-sm focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+      >
+        Pular para o conteúdo
+      </a>
+
+      <Header />
+
+      <main>
+        <Hero />
+        <Sobre />
+        <Skills />
+        <Projetos />
+      </main>
+
+      <Footer />
+    </>
   )
 }
 

@@ -89,3 +89,34 @@ reescritos — se uma decisão muda, adiciona-se uma nova que supera a anterior.
   [`DESIGN.md`](DESIGN.md), espelhados em `@theme` de `src/index.css`.
 - **Risco aceito e mitigação:** mono em excesso cansa a leitura — mitigado com
   corpo em sans (Geist Sans), hierarquia forte e accent usado com parcimônia.
+
+## ADR-0007 — Fontes auto-hospedadas via @fontsource-variable
+
+- **Contexto:** A direção "Monolito" depende de três fontes (Martian Mono, Geist,
+  JetBrains Mono). É preciso carregá-las com boa performance e sem prejudicar
+  privacidade nem a meta de Lighthouse 95+.
+- **Opções:** (a) `@fontsource-variable/*` (self-host, fontes variáveis); (b)
+  Google Fonts via `<link>`; (c) `@fontsource/*` estático (pesos fixos).
+- **Decisão:** `@fontsource-variable/*`, importando apenas o eixo de peso
+  (`/wght.css`) em `src/main.tsx`.
+- **Justificativa:** Self-host elimina a requisição a terceiros (privacidade e um
+  _render-blocking_ a menos) e é melhor para o Lighthouse. As versões variáveis
+  cobrem todos os pesos num arquivo enxuto; o Vite faz _fingerprint_ e os
+  `@font-face` trazem `unicode-range`, então só o subconjunto latino é baixado.
+  Importar só o eixo de peso evita itálico e o eixo de largura do Martian Mono.
+
+## ADR-0008 — Tema: store externo + script anti-FOUC
+
+- **Contexto:** Tema com detecção do sistema, toggle manual e persistência,
+  sem flash de tema errado (FOUC), e que o **terminal** também possa alternar.
+- **Opções:** (a) store externo com `useSyncExternalStore`; (b) React Context +
+  Provider; (c) estado local em cada componente.
+- **Decisão:** Um store mínimo em `src/lib/theme.ts` consumido por
+  `useSyncExternalStore` (hook `useTheme`), com a classe `.dark` no `<html>` como
+  verdade visual e um script inline síncrono no `<head>` aplicando o tema antes
+  da primeira pintura.
+- **Justificativa:** O store fora do React dá uma fonte de verdade única que tanto
+  o `ThemeToggle` quanto o comando `theme` do terminal (Fase 4) usam, sem aninhar
+  Providers nem duplicar estado. `useSyncExternalStore` é a API idiomática do
+  React 19 para fontes externas. O script inline é a única forma de evitar o FOUC,
+  pois roda antes do bundle; a chave (`theme`) e a lógica espelham `lib/theme.ts`.
