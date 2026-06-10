@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+
+/*
+ * Tailwind CSS v4 — configuração CSS-first.
+ * Os design tokens (cores, tipografia, espaçamentos, raios) serão definidos
+ * dentro do bloco @theme na FASE 2, após a escolha da direção de design.
+ * Por enquanto mantém-se mínimo apenas para validar o setup.
+ */
+@theme {
+  --font-sans: system-ui, sans-serif;
+}
+
+html {
+  color-scheme: light dark;
+}
