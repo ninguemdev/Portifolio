@@ -163,3 +163,22 @@ reescritos — se uma decisão muda, adiciona-se uma nova que supera a anterior.
   ativo, então fica verde no escuro e vermelhão no claro, sempre sutil.
 - **Risco aceito:** flerta com o visual banido; mitigado pelos valores (tom, não
   neon) e pela sutileza. Pode ser intensificado depois se o Dionel quiser.
+
+## ADR-0011 — Navegação mobile pelos chips do terminal
+
+- **Contexto:** A regra é "nav mobile sem hamburger que esconda conteúdo". Com a
+  marca mais longa (`dionel.ninguem`), as quatro âncoras de seção + a marca + o
+  toggle não cabiam confortavelmente na barra fixa em telas estreitas.
+- **Opções:** (a) esconder as âncoras de seção abaixo de `sm` e usar os chips do
+  terminal como nav mobile; (b) menu hambúrguer; (c) nav com scroll horizontal.
+- **Decisão:** No mobile, o `Header` mostra só a marca e o `ThemeToggle`; as
+  âncoras de seção aparecem a partir de `sm`. A navegação mobile fica nos **chips
+  de comando do terminal** (`sobre`/`skills`/`projetos`/`contato`), sempre
+  visíveis no hero.
+- **Justificativa:** Não é um hambúrguer escondendo conteúdo — a navegação é
+  **promovida** pela peça-assinatura do site (o terminal), tocável e à vista. Evita
+  o aperto da barra e o overflow, e reforça o conceito ("navegue digitando ou
+  tocando comandos"). O toggle de tema permanece sempre acessível.
+- **Validação:** medição automatizada com Chrome headless (puppeteer-core, depois
+  removido) em 320/375/414/768/1024/1280/1440px nos dois temas — zero overflow,
+  alvos de toque ≥44px. Metodologia registrada no ROADMAP (Fase 5).

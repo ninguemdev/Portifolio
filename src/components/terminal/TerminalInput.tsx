@@ -37,7 +37,7 @@ export default function TerminalInput({
     <form onSubmit={handleSubmit} className="mt-3">
       <div
         onClick={() => inputRef.current?.focus()}
-        className="border-border focus-within:border-accent focus-within:ring-accent flex items-center gap-2 rounded-md border px-3 py-2 transition-colors focus-within:ring-1"
+        className="border-border focus-within:border-accent focus-within:ring-accent relative flex min-h-12 items-center gap-2 rounded-md border px-3 py-2 transition-colors focus-within:ring-1"
       >
         <span
           className="text-accent shrink-0 font-mono text-sm"
@@ -45,24 +45,24 @@ export default function TerminalInput({
         >
           {PROMPT}
         </span>
-        <span className="relative min-w-0 flex-1">
-          <span className="text-text font-mono text-sm break-all whitespace-pre-wrap">
-            {value}
-            <span className="terminal-cursor" aria-hidden="true" />
-          </span>
-          <input
-            ref={inputRef}
-            value={value}
-            onChange={(event) => setValue(event.target.value)}
-            onKeyDown={handleKeyDown}
-            aria-label="Digite um comando do terminal"
-            autoComplete="off"
-            autoCapitalize="off"
-            autoCorrect="off"
-            spellCheck={false}
-            className="absolute inset-0 h-full w-full bg-transparent font-mono text-sm text-transparent caret-transparent outline-none"
-          />
+        <span className="text-text min-w-0 flex-1 font-mono text-sm break-all whitespace-pre-wrap">
+          {value}
+          <span className="terminal-cursor" aria-hidden="true" />
         </span>
+        {/* Input real cobrindo todo o campo: caret nativo oculto, alvo de toque
+            de 44px (inset-0 sobre o campo, não só sobre o texto). */}
+        <input
+          ref={inputRef}
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+          onKeyDown={handleKeyDown}
+          aria-label="Digite um comando do terminal"
+          autoComplete="off"
+          autoCapitalize="off"
+          autoCorrect="off"
+          spellCheck={false}
+          className="absolute inset-0 h-full w-full bg-transparent font-mono text-sm text-transparent caret-transparent outline-none"
+        />
       </div>
     </form>
   )

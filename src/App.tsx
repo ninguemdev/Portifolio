@@ -16,7 +16,7 @@ function App() {
 
       <a
         href="#sobre"
-        className="bg-accent text-accent-contrast sr-only z-[100] rounded-md px-4 py-2 font-mono text-sm focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+        className="bg-accent text-accent-contrast sr-only rounded-md px-4 py-2 font-mono text-sm focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:flex focus:min-h-11 focus:items-center focus:not-sr-only"
       >
         Pular para o conteúdo
       </a>

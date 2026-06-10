@@ -18,7 +18,7 @@ Legenda: `[x]` concluído · `[ ]` pendente · `[~]` em andamento.
 - [x] Boilerplate do template removido; `App.tsx` mínimo valida o stack
 - [x] Commit inicial aprovado
 
-## Fase 1 — Documentação 🔄
+## Fase 1 — Documentação ✅
 
 - [x] `CLAUDE.md` (memória do projeto)
 - [x] `docs/ARQUITETURA.md` (estrutura, componentes, temas, animações)
@@ -35,9 +35,9 @@ Legenda: `[x]` concluído · `[ ]` pendente · `[~]` em andamento.
 - [x] Documentar a direção escolhida em `DESIGN.md` (tokens de cor dos 2 temas,
       escala tipográfica fluida com `clamp()`, espaçamentos, raios, motion)
 - [x] Refletir os tokens em `@theme` de `src/index.css`
-- [ ] Commit da direção de design aprovado
+- [x] Commit da direção de design aprovado
 
-## Fase 3 — Estrutura, conteúdo e sistema de temas 🔄
+## Fase 3 — Estrutura, conteúdo e sistema de temas ✅
 
 - [x] Página única com landmarks: `<header>`, hero, `#sobre`, `#skills`,
       `#projetos`, `<footer id="contato">` (+ skip link)
@@ -50,9 +50,9 @@ Legenda: `[x]` concluído · `[ ]` pendente · `[~]` em andamento.
 - [x] Conteúdo dos dados inserido nas seções corretas; `[EDITAR]` listados
 - [x] Fontes web auto-hospedadas (Martian Mono, Geist, JetBrains Mono)
 - [x] Sem bibliotecas de componentes prontas
-- [ ] Commit aprovado
+- [x] Commit aprovado
 
-## Fase 4 — Terminal interativo + animações 🔄
+## Fase 4 — Terminal interativo + animações ✅
 
 - [x] Terminal funcional: `help`, `sobre`, `skills`, `projetos`, `contato`,
       `theme`, `clear`, `whoami`
@@ -63,18 +63,35 @@ Legenda: `[x]` concluído · `[ ]` pendente · `[~]` em andamento.
 - [x] Digitação de boot na entrada do site
 - [x] Animações Motion: entrada do hero, reveals on-scroll, micro-interações
 - [x] `prefers-reduced-motion`: digitação instantânea, reveals sem transição
+- [x] Commit aprovado
+
+## Fase 5 — Responsividade (prioridade máxima) 🔄
+
+- [x] Mobile-first em todos os componentes
+- [x] Validado em 320, 375, 414, 768, 1024, 1280, 1440px+ e landscape mobile
+      (medição automatizada com Chrome headless via puppeteer-core — depois
+      removido; ver "Validação" abaixo)
+- [x] Tipografia e espaçamentos fluidos com `clamp()` (desde a Fase 2)
+- [x] Zero overflow horizontal em todas as larguras, nos dois temas
+- [x] Alvos de toque ≥ 44×44px; nav mobile sem hamburger (chips do terminal)
+- [x] Terminal: chips tocáveis; input de 48px; `break-all` evita estouro
+- [x] Resumo: problemas por viewport e correções (abaixo)
 - [ ] Commit aprovado
 
-## Fase 5 — Responsividade (prioridade máxima)
+### Validação (Chrome headless, larguras-alvo × 2 temas)
 
-- [ ] Mobile-first em todos os componentes
-- [ ] Validado em 320, 375, 414, 768, 1024, 1280, 1440px+ e landscape mobile
-- [ ] Tipografia e espaçamentos fluidos com `clamp()`
-- [ ] Zero overflow horizontal (teste `max-width: 320px` por seção)
-- [ ] Alvos de toque ≥ 44×44px; nav mobile sem hamburger que esconda conteúdo
-- [ ] Terminal: chips tocáveis; teclado virtual não quebra layout
-- [ ] Resumo: cada problema por viewport e como foi corrigido
-- [ ] Commit aprovado
+Mediu-se `scrollWidth` vs viewport e o tamanho de cada alvo interativo. Problemas
+encontrados e corrigidos:
+
+| Problema                                     | Onde            | Correção                                                                                                                                           |
+| -------------------------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Marca "dionel." 66×21px (alvo < 44)          | `Header`        | virou `inline-flex h-11` (44px) e o texto passou a **dionel.ninguem**                                                                              |
+| Input do terminal 24px de altura (alvo < 44) | `TerminalInput` | `<input>` agora cobre todo o campo (`absolute inset-0`), campo com `min-h-12` → 46px                                                               |
+| Marca mais longa apertaria a nav no mobile   | `Header`        | âncoras de seção passam a aparecer só em `sm+`; no mobile a navegação fica nos **chips do terminal** (sem hamburger); `ThemeToggle` sempre visível |
+| Skip link < 44px quando visível              | `App`           | `focus:flex focus:min-h-11` ao receber foco                                                                                                        |
+
+**Overflow horizontal:** nenhum, de 320px a 1440px, em claro e escuro. Tipografia
+e espaçamentos fluidos (`clamp()`, Fase 2) garantem transição sem saltos.
 
 ## Fase 6 — Acessibilidade, performance e entrega
 

@@ -148,7 +148,11 @@ ambiente** sutil animado (`.ambient`, cor base movida p/ `<html>`); título pass
 **"Desenvolvedor Full Stack"** (sem "Júnior" — ele nunca atuou como dev, e não quer
 "estudante"). Ver ADR-0010.
 
-**Próximo: Fase 5** — responsividade (prioridade máxima): validar 320→ultrawide,
-zero overflow, alvos de toque, terminal no mobile. **Atenção p/ Fase 6:** o bundle
-JS cresceu com o Motion (~106 KB gzip) — avaliar `LazyMotion`/code-split para a
-meta de Lighthouse 95+.
+**Fase 5 (responsividade) concluída.** Zero overflow horizontal de 320px a 1440px
+nos dois temas (medido com Chrome headless). Alvos de toque ≥44px. No mobile, a nav
+de seções fica nos chips do terminal (header mostra só marca + toggle; âncoras a
+partir de `sm`). Marca virou **dionel.ninguem**. Ver ADR-0011.
+
+**Próximo: Fase 6** — acessibilidade (contraste WCAG dos 2 temas, teclado, foco,
+headings), performance e entrega (Lighthouse 95+, meta tags, README). **Atenção:**
+o bundle JS cresceu com o Motion (~106 KB gzip) — avaliar `LazyMotion`/code-split.
