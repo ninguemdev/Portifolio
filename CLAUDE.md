@@ -9,8 +9,8 @@
 
 ## O que é
 
-Site de **portfólio pessoal** de **Dionel Sebastião** (Desenvolvedor Full Stack
-Júnior). Uma _landing page_ única (one-page), em **português (pt-BR)**, com
+Site de **portfólio pessoal** de **Dionel Sebastião** (Desenvolvedor Full
+Stack). Uma _landing page_ única (one-page), em **português (pt-BR)**, com
 identidade visual própria, **dark e light mode** tratados como dois temas
 desenhados com o mesmo cuidado, animações com propósito e responsividade
 impecável de **320px a ultrawide**.
@@ -141,6 +141,12 @@ chips tocáveis e anúncio via região `aria-live` dedicada (a saída visual é
 de estados num `useReducer`; a digitação vem de [`useTypewriter`](src/hooks/useTypewriter.ts).
 Animações com Motion: entrada do hero, [`Reveal`](src/components/ui/Reveal.tsx)
 on-scroll nas seções e micro-interações — tudo com fallback de `prefers-reduced-motion`.
+
+**Revisões pós-Fase 4 (a pedido do Dionel):** tema escuro virou **preto e verde**
+(`#0A0C0A` / accent `#4ADE80`; claro segue vermelhão — accent por tema); **fundo
+ambiente** sutil animado (`.ambient`, cor base movida p/ `<html>`); título passou a
+**"Desenvolvedor Full Stack"** (sem "Júnior" — ele nunca atuou como dev, e não quer
+"estudante"). Ver ADR-0010.
 
 **Próximo: Fase 5** — responsividade (prioridade máxima): validar 320→ultrawide,
 zero overflow, alvos de toque, terminal no mobile. **Atenção p/ Fase 6:** o bundle

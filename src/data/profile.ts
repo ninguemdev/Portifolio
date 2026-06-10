@@ -6,7 +6,7 @@ import type { Profile } from '../types/content'
  */
 export const profile: Profile = {
   name: 'Dionel Sebastião',
-  title: 'Desenvolvedor Full Stack Júnior',
+  title: 'Desenvolvedor Full Stack',
 
   bio:
     'Desenvolvedor Full Stack que leva arquitetura a sério: domínio separado da ' +

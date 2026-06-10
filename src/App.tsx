@@ -7,12 +7,13 @@ import Projetos from './components/sections/Projetos'
 
 /**
  * Landing page única. Landmarks semânticos: <header> (nav fixa), <main> com o
- * hero e as seções, e <footer> (#contato). A interatividade do terminal e as
- * animações chegam na Fase 4.
+ * hero e as seções, e <footer> (#contato). O fundo ambiente fica atrás de tudo.
  */
 function App() {
   return (
     <>
+      <div className="ambient" aria-hidden="true" />
+
       <a
         href="#sobre"
         className="bg-accent text-accent-contrast sr-only z-[100] rounded-md px-4 py-2 font-mono text-sm focus:not-sr-only focus:fixed focus:top-3 focus:left-3"

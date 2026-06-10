@@ -142,3 +142,24 @@ reescritos — se uma decisão muda, adiciona-se uma nova que supera a anterior.
   texto final uma vez, enquanto a parte visual continua sendo só efeito. Nada
   depende da animação: com reduced motion o texto é instantâneo e os comandos
   funcionam igual.
+
+## ADR-0010 — Tema escuro "preto e verde" + fundo ambiente
+
+- **Contexto:** Pedido do Dionel para o tema escuro ser preto e verde e para um
+  fundo com gradiente que muda de cor de forma propositalmente quase
+  imperceptível. "Preto + verde neon" é, porém, um dos visuais banidos no
+  briefing (quase-preto + accent neon).
+- **Decisão:** Tema escuro com **near-black levemente esverdeado** (`#0A0C0A`) e
+  **verde fósforo equilibrado** (`#4ADE80`) — não preto puro nem verde-ácido. O
+  tema claro mantém o accent vermelhão, então cada tema tem accent próprio. Um
+  fundo ambiente (`.ambient`) fixo atrás de tudo: duas camadas de gradiente
+  tingidas com o accent fazem crossfade lento + leve deriva (anima só
+  `opacity`/`transform`), estático com reduced motion. A cor base passou do
+  `<body>` para o `<html>` para o fundo ambiente (z-index negativo) aparecer.
+- **Justificativa:** Honra o pedido aplicando bom gosto — o verde é legível e
+  distinto sem o clichê de "terminal hacker", e o near-black evita o preto chapado.
+  Accents diferentes por tema reforçam o princípio de "dois temas desenhados com o
+  mesmo cuidado, não um a inversão do outro". O ambiente usa o accent do tema
+  ativo, então fica verde no escuro e vermelhão no claro, sempre sutil.
+- **Risco aceito:** flerta com o visual banido; mitigado pelos valores (tom, não
+  neon) e pela sutileza. Pode ser intensificado depois se o Dionel quiser.

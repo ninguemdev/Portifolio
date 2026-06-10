@@ -29,16 +29,19 @@
   --border: #e2e0da;
 }
 
+/* Tema escuro "preto e verde": near-black com leve tom verde + verde fósforo
+   equilibrado (não o neon ácido banido). Light segue vermelhão — dois temas
+   com personalidade própria. */
 .dark {
   color-scheme: dark;
-  --bg: #131211;
-  --surface: #1b1a18;
-  --text: #e8e6e0;
-  --heading: #ffffff;
-  --muted: #8a8780;
-  --accent: #ff5436;
-  --accent-contrast: #131211;
-  --border: #2a2826;
+  --bg: #0a0c0a;
+  --surface: #11140f;
+  --text: #dce3da;
+  --heading: #f4f8f3;
+  --muted: #7e8c7c;
+  --accent: #4ade80;
+  --accent-contrast: #07120b;
+  --border: #1d231b;
 }
 
 /* ----------------------------------------------------------------------------
@@ -120,15 +123,75 @@
  * Camada base — aplica os tokens aos elementos.
  * -------------------------------------------------------------------------- */
 @layer base {
+  /* A cor base fica no <html> para o fundo ambiente (z-index negativo) aparecer
+     por trás do conteúdo. O <body> fica transparente. */
+  html {
+    background-color: var(--bg);
+  }
+
   body {
     margin: 0;
-    background-color: var(--bg);
     color: var(--text);
     font-family: var(--font-sans);
     font-size: var(--text-base);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+  }
+
+  /* Fundo ambiente: gradiente lento e propositalmente quase imperceptível.
+     Duas camadas tingidas com o accent fazem crossfade + leve deriva — anima só
+     opacity e transform. Some por completo com prefers-reduced-motion. */
+  .ambient {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .ambient::before,
+  .ambient::after {
+    content: '';
+    position: absolute;
+    inset: -30%;
+    will-change: opacity, transform;
+    background:
+      radial-gradient(
+        40% 40% at 25% 30%,
+        color-mix(in oklab, var(--accent) 14%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        45% 45% at 75% 70%,
+        color-mix(in oklab, var(--accent) 10%, transparent),
+        transparent 72%
+      );
+    opacity: 0.5;
+  }
+
+  .ambient::after {
+    background:
+      radial-gradient(
+        45% 45% at 72% 28%,
+        color-mix(in oklab, var(--accent) 12%, transparent),
+        transparent 72%
+      ),
+      radial-gradient(
+        40% 40% at 28% 75%,
+        color-mix(in oklab, var(--accent) 8%, transparent),
+        transparent 70%
+      );
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ambient::before {
+      animation: ambient-drift-a 34s ease-in-out infinite alternate;
+    }
+    .ambient::after {
+      animation: ambient-drift-b 34s ease-in-out infinite alternate;
+    }
   }
 
   h1,
@@ -185,5 +248,27 @@
   50.01%,
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes ambient-drift-a {
+  from {
+    opacity: 0.6;
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+  to {
+    opacity: 0.3;
+    transform: translate3d(2%, 1%, 0) scale(1.05);
+  }
+}
+
+@keyframes ambient-drift-b {
+  from {
+    opacity: 0;
+    transform: translate3d(2%, 1%, 0) scale(1.05);
+  }
+  to {
+    opacity: 0.5;
+    transform: translate3d(-2%, -1%, 0) scale(1);
   }
 }

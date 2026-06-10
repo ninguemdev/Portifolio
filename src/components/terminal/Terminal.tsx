@@ -15,7 +15,7 @@ import CommandChips from './CommandChips'
 
 const bootLines: Array<Omit<TerminalLine, 'id'>> = [
   { kind: 'system', text: 'Sistema iniciado — portfólio de Dionel Sebastião.' },
-  { kind: 'system', text: 'Desenvolvedor Full Stack Júnior.' },
+  { kind: 'system', text: 'Desenvolvedor Full Stack.' },
   {
     kind: 'output',
     text: 'Digite "help" para ver os comandos, ou toque num atalho acima.',

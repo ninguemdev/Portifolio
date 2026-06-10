@@ -13,7 +13,7 @@ espaçamentos, raios e princípios de motion.
 
 O monoespaço levado a sério como decisão de design: o site inteiro é tipografado
 como um belo arquivo de código / _man page_ — alinhamento à esquerda, títulos
-gigantes, muito ar e um único accent vermelhão. **Não há "janelinha" de terminal:
+gigantes, muito ar e um accent forte (vermelhão no claro, verde no escuro). **Não há "janelinha" de terminal:
 o hero inteiro É o terminal**, e a digitação de entrada (boot) vira o próprio
 título do site; o restante do conteúdo "continua" a partir dele.
 
@@ -35,8 +35,9 @@ terracota; layout jornal de linhas finas sem raio; Inter ou Roboto como fonte
 Sem cromo de janela. Um prompt grande `dionel@portfolio:~$` abre a página e, no
 carregamento, **digita** a apresentação caractere a caractere (efeito de boot)
 com cursor de bloco piscando. A moldura é mínima — definida por espaço e
-tipografia, não por bordas pesadas. O accent vermelhão marca o cursor, o prompt e
-estados ativos. Com `prefers-reduced-motion`, a digitação é substituída por texto
+tipografia, não por bordas pesadas. O accent (vermelhão no claro, verde no escuro)
+marca o cursor, o prompt e estados ativos. Com `prefers-reduced-motion`, a
+digitação é substituída por texto
 instantâneo (ver §6).
 
 ---
@@ -61,22 +62,24 @@ são verificadas e registradas na Fase 6.
 | `--accent-contrast` | Texto sobre o accent                 | `#FFFFFF` |
 | `--border`          | Bordas e divisores                   | `#E2E0DA` |
 
-### 2.2 Tema escuro
+### 2.2 Tema escuro — "preto e verde"
 
-| Token               | Papel                       | Valor     |
-| ------------------- | --------------------------- | --------- |
-| `--bg`              | Fundo base                  | `#131211` |
-| `--surface`         | Superfícies elevadas        | `#1B1A18` |
-| `--text`            | Texto de corpo              | `#E8E6E0` |
-| `--heading`         | Títulos                     | `#FFFFFF` |
-| `--muted`           | Texto secundário            | `#8A8780` |
-| `--accent`          | Destaque / ação (vermelhão) | `#FF5436` |
-| `--accent-contrast` | Texto sobre o accent        | `#131211` |
-| `--border`          | Bordas e divisores          | `#2A2826` |
+| Token               | Papel                   | Valor     |
+| ------------------- | ----------------------- | --------- |
+| `--bg`              | Fundo base              | `#0A0C0A` |
+| `--surface`         | Superfícies elevadas    | `#11140F` |
+| `--text`            | Texto de corpo          | `#DCE3DA` |
+| `--heading`         | Títulos                 | `#F4F8F3` |
+| `--muted`           | Texto secundário        | `#7E8C7C` |
+| `--accent`          | Destaque / ação (verde) | `#4ADE80` |
+| `--accent-contrast` | Texto sobre o accent    | `#07120B` |
+| `--border`          | Bordas e divisores      | `#1D231B` |
 
-O fundo é um **quase-preto quente** (`#131211`), não preto puro — evita o clichê e
-suaviza o contraste. O accent clareia no escuro (`#FF5436`) para manter presença.
-Utilities geradas: `bg-bg`, `bg-surface`, `text-text`, `text-heading`,
+Os dois temas têm **accents próprios**: vermelhão no claro, **verde fósforo** no
+escuro — não um a inversão do outro. O fundo escuro é um **near-black com leve tom
+verde** (`#0A0C0A`), não preto puro nem o verde-ácido neon banido; o verde
+escolhido (`#4ADE80`) é equilibrado e legível, evitando o clichê de "terminal
+hacker". Utilities geradas: `bg-bg`, `bg-surface`, `text-text`, `text-heading`,
 `text-muted`, `text-accent`, `bg-accent`, `text-accent-contrast`, `border-border`.
 
 ---
@@ -159,10 +162,15 @@ Animação com propósito; nunca atrapalha e nunca é requisito de funcionamento
 - **Reveals on-scroll:** sutis e uma única vez (`once: true`), via o componente
   `Reveal`.
 - **Micro-interações:** em links, botões e cards de projeto — contidas.
+- **Fundo ambiente:** um gradiente tingido com o accent, **propositalmente quase
+  imperceptível**, fixo atrás de todo o conteúdo (`.ambient`). Duas camadas fazem
+  crossfade lento (~34s) com leve deriva — anima só `opacity`/`transform`. Some
+  por completo com reduced motion (fica estático).
 - **`prefers-reduced-motion: reduce`:** o site funciona perfeitamente sem
   movimento. A digitação do terminal vira **texto instantâneo**, os reveals
-  aparecem **sem transição**, e o scroll suave é desligado. Nenhuma funcionalidade
-  (inclusive os comandos do terminal) depende de animação.
+  aparecem **sem transição**, o fundo ambiente fica **estático** e o scroll suave
+  é desligado. Nenhuma funcionalidade (inclusive os comandos do terminal) depende
+  de animação.
 
 Em JS, os valores acima vivem em `src/motion/presets.ts` (criado na Fase 3/4) para
 não espalhar números mágicos pelos componentes.
