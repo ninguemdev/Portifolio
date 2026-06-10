@@ -1,15 +1,158 @@
 @import 'tailwindcss';
 
 /*
- * Tailwind CSS v4 — configuração CSS-first.
- * Os design tokens (cores, tipografia, espaçamentos, raios) serão definidos
- * dentro do bloco @theme na FASE 2, após a escolha da direção de design.
- * Por enquanto mantém-se mínimo apenas para validar o setup.
+ * ============================================================================
+ * Direção de design: "Monolito" (ver docs/DESIGN.md)
+ * Tailwind CSS v4 — configuração CSS-first. Os tokens vivem aqui, não num
+ * tailwind.config.js. As fontes web (Martian Mono, Geist Sans, JetBrains Mono)
+ * são carregadas na Fase 3; até lá os fallbacks abaixo entram em ação.
+ * ============================================================================
  */
-@theme {
-  --font-sans: system-ui, sans-serif;
+
+/* Dark mode controlado por classe `.dark` no <html>, não por prefers-color-scheme.
+   Assim o toggle manual e o script anti-FOUC têm a palavra final. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ----------------------------------------------------------------------------
+ * Tokens que mudam entre os dois temas (valores brutos).
+ * São referenciados em @theme inline (utilities) e na camada base.
+ * -------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --heading: #000000;
+  --muted: #6b6b66;
+  --accent: #e5341b;
+  --accent-contrast: #ffffff;
+  --border: #e2e0da;
 }
 
-html {
-  color-scheme: light dark;
+.dark {
+  color-scheme: dark;
+  --bg: #131211;
+  --surface: #1b1a18;
+  --text: #e8e6e0;
+  --heading: #ffffff;
+  --muted: #8a8780;
+  --accent: #ff5436;
+  --accent-contrast: #131211;
+  --border: #2a2826;
+}
+
+/* ----------------------------------------------------------------------------
+ * Cores como utilities do Tailwind. `inline` faz cada utility apontar para a
+ * CSS var bruta (var(--bg)…), então `bg-bg`, `text-accent`, etc. respondem ao
+ * tema em runtime sem regenerar classes.
+ * -------------------------------------------------------------------------- */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-heading: var(--heading);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-border: var(--border);
+}
+
+/* ----------------------------------------------------------------------------
+ * Tokens independentes de tema: fontes, escala tipográfica fluida, raios,
+ * espaçamentos e easings.
+ * -------------------------------------------------------------------------- */
+@theme {
+  /* Famílias — o display e o mono compartilham DNA monoespaçado (o "Monolito");
+     o corpo é sans para aliviar a leitura de parágrafos longos. */
+  --font-display: 'Martian Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --font-sans: 'Geist Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Escala tipográfica fluida: min em 320px → max em 1280px, sem saltos. */
+  --text-xs: clamp(0.75rem, 0.729rem + 0.104vw, 0.8125rem);
+  --text-xs--line-height: 1.5;
+  --text-sm: clamp(0.875rem, 0.854rem + 0.104vw, 0.9375rem);
+  --text-sm--line-height: 1.5;
+  --text-base: clamp(1rem, 0.958rem + 0.208vw, 1.125rem);
+  --text-base--line-height: 1.65;
+  --text-lg: clamp(1.125rem, 1.063rem + 0.313vw, 1.3125rem);
+  --text-lg--line-height: 1.55;
+  --text-xl: clamp(1.375rem, 1.271rem + 0.521vw, 1.6875rem);
+  --text-xl--line-height: 1.3;
+  --text-2xl: clamp(1.6875rem, 1.5rem + 0.938vw, 2.25rem);
+  --text-2xl--line-height: 1.2;
+  --text-3xl: clamp(2.0625rem, 1.75rem + 1.563vw, 3rem);
+  --text-3xl--line-height: 1.12;
+  --text-4xl: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+  --text-4xl--line-height: 1.05;
+  --text-5xl: clamp(3rem, 2.167rem + 4.167vw, 5.5rem);
+  --text-5xl--line-height: 1;
+
+  /* Raios — "Monolito" prefere cantos quase retos; poucos e intencionais. */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* Espaçamentos semânticos fluidos (além da escala padrão do Tailwind). */
+  --spacing-gutter: clamp(1rem, 5vw, 2rem);
+  --spacing-section: clamp(4rem, 10vw, 9rem);
+
+  /* Largura máxima do conteúdo. */
+  --container-content: 72rem;
+
+  /* Easings (geram utilities ease-*). */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Durações de motion para transições CSS (hover/focus). O motion em JS usa os
+   presets de src/motion/presets.ts. */
+:root {
+  --duration-fast: 150ms;
+  --duration-base: 280ms;
+  --duration-slow: 600ms;
+}
+
+/* ----------------------------------------------------------------------------
+ * Camada base — aplica os tokens aos elementos.
+ * -------------------------------------------------------------------------- */
+@layer base {
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--heading);
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  /* Foco visível customizado, coerente nos dois temas. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Scroll suave apenas para quem não pediu menos movimento. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
 }

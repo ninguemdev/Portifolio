@@ -70,3 +70,22 @@ reescritos — se uma decisão muda, adiciona-se uma nova que supera a anterior.
   silenciosamente na tela). Editar o portfólio passa a ser editar dados, não
   layout — e o README poderá apontar exatamente para onde mexer. JSON perderia a
   tipagem; texto no JSX espalharia o conteúdo.
+
+## ADR-0006 — Direção de design: "Monolito"
+
+- **Contexto:** O portfólio precisa de identidade visual própria e memorável,
+  fugindo do visual genérico de IA, com o terminal-hero como peça-assinatura e
+  uma animação de digitação na entrada (pedido explícito do Dionel).
+- **Opções:** três direções nomeadas e desenhadas — (1) "Console de Bordo" (HUD
+  analógico, âmbar/teal, narrativa do jogo Supernova); (2) "Oficina Risográfica"
+  (duotone fluoro + halftone, estética de impressão riso); (3) "Monolito"
+  (monoespaço editorial, accent vermelhão, o hero inteiro é o terminal).
+- **Decisão:** Direção 3 — "Monolito".
+- **Justificativa:** Põe a digitação de entrada no centro absoluto — a animação
+  não decora o hero, ela _é_ o hero. É a mais distinta sem depender de skin
+  temática (1, risco de kitsch) nem de textura frágil em performance e
+  legibilidade (2, risco de grão/halftone). Brilha igualmente em claro e escuro e
+  é a mais fácil de descrever no dia seguinte. Tokens completos em
+  [`DESIGN.md`](DESIGN.md), espelhados em `@theme` de `src/index.css`.
+- **Risco aceito e mitigação:** mono em excesso cansa a leitura — mitigado com
+  corpo em sans (Geist Sans), hierarquia forte e accent usado com parcimônia.

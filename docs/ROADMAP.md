@@ -25,16 +25,16 @@ Legenda: `[x]` concluído · `[ ]` pendente · `[~]` em andamento.
 - [x] `docs/DESIGN.md` (estrutura pronta; tokens na Fase 2)
 - [x] `docs/ROADMAP.md` (este arquivo)
 - [x] `docs/DECISOES.md` (ADRs; decisões da Fase 0 registradas)
-- [ ] Commit da documentação aprovado
+- [x] Commit da documentação aprovado
 
-## Fase 2 — Direção de design
+## Fase 2 — Direção de design ✅
 
-- [ ] Propor 3 direções criativas nomeadas (conceito, paleta dark+light,
+- [x] Propor 3 direções criativas nomeadas (conceito, paleta dark+light,
       par tipográfico, terminal-hero, risco estético)
-- [ ] Recomendar a mais forte e aguardar a escolha
-- [ ] Documentar a direção escolhida em `DESIGN.md` (tokens de cor dos 2 temas,
+- [x] Recomendar a mais forte e aguardar a escolha → escolhida: **"Monolito"**
+- [x] Documentar a direção escolhida em `DESIGN.md` (tokens de cor dos 2 temas,
       escala tipográfica fluida com `clamp()`, espaçamentos, raios, motion)
-- [ ] Refletir os tokens em `@theme` de `src/index.css`
+- [x] Refletir os tokens em `@theme` de `src/index.css`
 - [ ] Commit da direção de design aprovado
 
 ## Fase 3 — Estrutura, conteúdo e sistema de temas

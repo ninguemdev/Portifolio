@@ -130,7 +130,13 @@ um resumo + o que vem a seguir. **Aguardar OK do Dionel antes de avançar.**
 
 ## Estado atual
 
-**Fase 1 (Documentação) em andamento.** Fase 0 (Setup) concluída — toolchain
-instalada e validada (`dev`, `build`, `lint` ok). Próximo grande marco após a
-documentação: Fase 2 (direção de design), onde os tokens em
-[`docs/DESIGN.md`](docs/DESIGN.md) e no `@theme` serão preenchidos.
+**Fases 0–2 concluídas.** Setup e documentação prontos; direção de design
+escolhida: **"Monolito"** — monoespaço editorial, accent vermelhão, o hero inteiro
+é o terminal (que digita a abertura sozinho ao carregar). Fontes: **Martian Mono**
+(display), **Geist Sans** (corpo), **JetBrains Mono** (mono) — ainda a carregar na
+Fase 3. Todos os tokens estão em `@theme` de [`src/index.css`](src/index.css) e
+documentados em [`docs/DESIGN.md`](docs/DESIGN.md).
+
+**Próximo: Fase 3** — estrutura semântica, conteúdo em `src/data/`, sistema de
+temas (classe `.dark`, script anti-FOUC, toggle persistido) e carregamento das
+fontes web.
