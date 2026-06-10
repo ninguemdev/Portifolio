@@ -130,14 +130,19 @@ um resumo + o que vem a seguir. **Aguardar OK do Dionel antes de avançar.**
 
 ## Estado atual
 
-**Fases 0–3 concluídas.** Setup, documentação, direção de design **"Monolito"** e
-agora a estrutura: landing page com landmarks semânticos (`<header>` fixo, `<main>`
-com hero + `#sobre`/`#skills`/`#projetos`, `<footer id="contato">`), conteúdo em
-[`src/data/`](src/data/), sistema de temas completo (classe `.dark`, store em
-[`src/lib/theme.ts`](src/lib/theme.ts) via `useSyncExternalStore`, script anti-FOUC
-em [`index.html`](index.html), `ThemeToggle` persistido em `localStorage`) e fontes
-auto-hospedadas via `@fontsource-variable` em [`src/main.tsx`](src/main.tsx).
+**Fases 0–4 concluídas.** Setup, documentação, direção **"Monolito"**, estrutura +
+temas, e agora o **terminal interativo** (peça-assinatura) com as animações.
 
-O hero é uma versão **estática** do terminal — a interatividade (input, comandos,
-histórico), a digitação de boot e as animações vêm na **Fase 4** (próxima). O
-store de tema já expõe `toggleTheme()` para o comando `theme` do terminal.
+O terminal ([`src/components/terminal/`](src/components/terminal/)) tem os comandos
+`help`/`sobre`/`skills`/`projetos`/`contato`/`theme`/`clear`/`whoami`, `<input>`
+real com cursor de bloco piscando, histórico ↑/↓, digitação de boot na entrada,
+chips tocáveis e anúncio via região `aria-live` dedicada (a saída visual é
+`aria-hidden` para não narrar caractere a caractere). A fila de saída é uma máquina
+de estados num `useReducer`; a digitação vem de [`useTypewriter`](src/hooks/useTypewriter.ts).
+Animações com Motion: entrada do hero, [`Reveal`](src/components/ui/Reveal.tsx)
+on-scroll nas seções e micro-interações — tudo com fallback de `prefers-reduced-motion`.
+
+**Próximo: Fase 5** — responsividade (prioridade máxima): validar 320→ultrawide,
+zero overflow, alvos de toque, terminal no mobile. **Atenção p/ Fase 6:** o bundle
+JS cresceu com o Motion (~106 KB gzip) — avaliar `LazyMotion`/code-split para a
+meta de Lighthouse 95+.

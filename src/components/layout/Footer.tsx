@@ -1,4 +1,5 @@
 import { profile } from '../../data/profile'
+import Reveal from '../ui/Reveal'
 
 /** Apenas links com destino definido aparecem (pendências [EDITAR] ficam ocultas). */
 const links = profile.social.filter((link) => link.href !== null)
@@ -15,7 +16,7 @@ export default function Footer() {
       id="contato"
       className="border-border scroll-mt-20 border-t px-[var(--spacing-gutter)] py-[var(--spacing-section)]"
     >
-      <div className="mx-auto max-w-[var(--container-content)]">
+      <Reveal className="mx-auto max-w-[var(--container-content)]">
         <p className="text-accent font-mono text-sm">$ contato</p>
         <h2 className="text-heading font-display mt-3 text-3xl tracking-tight">
           Vamos conversar.
@@ -47,7 +48,7 @@ export default function Footer() {
         <p className="text-muted mt-12 font-mono text-xs">
           © {year} {profile.name} · feito com React, TypeScript e Tailwind CSS.
         </p>
-      </div>
+      </Reveal>
     </footer>
   )
 }

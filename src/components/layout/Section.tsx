@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import Reveal from '../ui/Reveal'
 
 type SectionProps = {
   /** Vira o `id` do landmark e a âncora de navegação. */
@@ -31,7 +32,7 @@ export default function Section({
       aria-labelledby={headingId}
       className="scroll-mt-20 px-[var(--spacing-gutter)] py-[var(--spacing-section)]"
     >
-      <div className="mx-auto max-w-[var(--container-content)]">
+      <Reveal className="mx-auto max-w-[var(--container-content)]">
         <p className="text-accent font-mono text-sm">$ {command}</p>
         <h2
           id={headingId}
@@ -43,7 +44,7 @@ export default function Section({
           <p className="text-muted mt-4 max-w-prose text-lg">{intro}</p>
         )}
         <div className="mt-10">{children}</div>
-      </div>
+      </Reveal>
     </section>
   )
 }

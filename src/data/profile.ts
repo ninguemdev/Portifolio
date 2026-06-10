@@ -9,17 +9,23 @@ export const profile: Profile = {
   title: 'Desenvolvedor Full Stack Júnior',
 
   bio:
-    'Desenvolvedor Full Stack Júnior que transita do front ao back: interfaces ' +
-    'em React e TypeScript, APIs em Node.js, Django e .NET, e dados em SQL e ' +
-    'NoSQL. Também desenvolvo jogos na Unity (C#) e, no momento, estudo Next.js. ' +
-    'Gosto de código legível, acessível e bem documentado — este próprio site é ' +
-    'um exemplo disso.',
+    'Desenvolvedor Full Stack que leva arquitetura a sério: domínio separado da ' +
+    'UI, segurança validada no banco e não só na interface, SQL escrito à mão ' +
+    'por escolha. Construo aplicações web com React, TypeScript e Astro, ' +
+    'integradas a PostgreSQL, MySQL e MongoDB. No back, Django e .NET Core. Fora ' +
+    'do web, desenvolvo jogos na Unity com C# e dedico tempo real ao estudo de ' +
+    'algoritmos e arquitetura de IA. Gosto de código que explica o que faz e de ' +
+    'projetos que sobrevivem a uma revisão técnica — este site incluído.',
 
-  // Easter egg do comando `whoami` — brinca com o @ "ninguemdev".
-  whoami:
-    'ninguém. Literalmente — é só olhar meu @. Brincadeira: sou o Dionel, dev ' +
-    'full stack que troca café por commits e ainda faz joguinho na Unity nas ' +
-    'horas vagas.',
+  // Easter egg do comando `whoami` — uma resposta é sorteada a cada chamada.
+  whoami: [
+    'ninguém. Literalmente — é só olhar meu @. Brincadeira: sou o Dionel, dev full stack.',
+    'um Desenvolvedor Full Stack disfarçado de comando de terminal.',
+    'depende: no front sou React, no back sou .NET, e às 2h da manhã sou só console.log.',
+    'o cara que escreve SQL na mão porque ORM nenhum manda nele... ainda.',
+    'metade dev web, metade dev de jogos na Unity, e a outra metade estudando IA. Sim, três metades.',
+    'Dionel. Faço a UI conversar com o banco sem nenhum dos dois sair magoado.',
+  ],
 
   social: [
     {

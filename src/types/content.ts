@@ -22,8 +22,8 @@ export type Profile = {
   title: string
   /** Mini-bio impressa pelo comando `sobre` e exibida na seção #sobre. */
   bio: string
-  /** Resposta irreverente do easter egg `whoami`. */
-  whoami: string
+  /** Respostas irreverentes do easter egg `whoami` (uma é sorteada a cada chamada). */
+  whoami: string[]
   social: SocialLink[]
 }
 

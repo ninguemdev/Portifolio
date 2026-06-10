@@ -158,4 +158,32 @@
       scroll-behavior: smooth;
     }
   }
+
+  /* Cursor de bloco do terminal — pisca, mas fica sólido com reduced motion. */
+  .terminal-cursor {
+    display: inline-block;
+    width: 0.55em;
+    height: 1.1em;
+    margin-left: 0.05em;
+    vertical-align: text-bottom;
+    background-color: var(--accent);
+    animation: terminal-blink 1s steps(1) infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .terminal-cursor {
+      animation: none;
+    }
+  }
+}
+
+@keyframes terminal-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
 }

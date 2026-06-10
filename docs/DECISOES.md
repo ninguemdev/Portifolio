@@ -120,3 +120,25 @@ reescritos — se uma decisão muda, adiciona-se uma nova que supera a anterior.
   Providers nem duplicar estado. `useSyncExternalStore` é a API idiomática do
   React 19 para fontes externas. O script inline é a única forma de evitar o FOUC,
   pois roda antes do bundle; a chave (`theme`) e a lógica espelham `lib/theme.ts`.
+
+## ADR-0009 — Terminal: reducer + acessibilidade da saída digitada
+
+- **Contexto:** O terminal digita a saída caractere a caractere e precisa ser
+  acessível por teclado e a leitores de tela — sem narrar cada caractere nem
+  depender da animação para funcionar.
+- **Opções de estado:** (a) `useReducer` como máquina de estados (committed /
+  queue / current); (b) vários `useState` sincronizados por efeitos.
+- **Opções de a11y:** (a) saída visual `aria-hidden` + região `aria-live`
+  dedicada que recebe o texto final de cada comando uma vez; (b) marcar o
+  container de saída inteiro como `aria-live`.
+- **Decisão:** `useReducer` para a fila de digitação; saída visual `aria-hidden`
+  com uma região `aria-live="polite"` separada (sr-only) anunciando o resultado
+  completo de cada comando. O `<input>` é real (caret nativo oculto, cursor de
+  bloco desenhado por cima); a digitação usa timers e respeita reduced motion.
+- **Justificativa:** O reducer concentra as transições e evita `setState` dentro
+  de efeitos (que a regra `react-hooks/set-state-in-effect` do ESLint 10 proíbe),
+  deixando a "próxima linha" como parte pura da transição. Marcar a saída visual
+  como `aria-live` narraria cada caractere — péssimo; a região dedicada anuncia o
+  texto final uma vez, enquanto a parte visual continua sendo só efeito. Nada
+  depende da animação: com reduced motion o texto é instantâneo e os comandos
+  funcionam igual.

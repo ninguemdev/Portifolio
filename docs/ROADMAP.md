@@ -52,16 +52,17 @@ Legenda: `[x]` concluído · `[ ]` pendente · `[~]` em andamento.
 - [x] Sem bibliotecas de componentes prontas
 - [ ] Commit aprovado
 
-## Fase 4 — Terminal interativo + animações
+## Fase 4 — Terminal interativo + animações 🔄
 
-- [ ] Terminal funcional: `help`, `sobre`, `skills`, `projetos`, `contato`,
+- [x] Terminal funcional: `help`, `sobre`, `skills`, `projetos`, `contato`,
       `theme`, `clear`, `whoami`
-- [ ] `<input>` real, navegável por teclado, cursor piscando
-- [ ] Histórico de comandos com setas ↑/↓
-- [ ] Saída anunciada via `aria-live`; efeito de digitação
-- [ ] Chips de comando tocáveis (mobile) acima do input
-- [ ] Animações Motion: entrada do hero, reveals on-scroll, micro-interações
-- [ ] `prefers-reduced-motion`: digitação instantânea, reveals sem transição
+- [x] `<input>` real, navegável por teclado, cursor de bloco piscando
+- [x] Histórico de comandos com setas ↑/↓
+- [x] Saída anunciada via `aria-live` (região dedicada); efeito de digitação
+- [x] Chips de comando tocáveis (≥44px) acima do input
+- [x] Digitação de boot na entrada do site
+- [x] Animações Motion: entrada do hero, reveals on-scroll, micro-interações
+- [x] `prefers-reduced-motion`: digitação instantânea, reveals sem transição
 - [ ] Commit aprovado
 
 ## Fase 5 — Responsividade (prioridade máxima)

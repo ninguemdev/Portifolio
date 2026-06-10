@@ -1,14 +1,16 @@
+import { motion, useReducedMotion } from 'motion/react'
 import { profile } from '../../data/profile'
-
-const tagline =
-  'Do front ao back, com TypeScript no meio — e um joguinho na Unity no caminho.'
+import { EASE_OUT } from '../../motion/presets'
+import Terminal from '../terminal/Terminal'
 
 /**
- * Hero "Monolito": o próprio terminal é o herói da página. Aqui é a versão
- * estática (estrutura + conteúdo). A digitação de boot, o cursor piscando e a
- * interatividade chegam na Fase 4.
+ * Hero "Monolito": o próprio terminal é o herói da página. Um <h1> visualmente
+ * oculto garante o título para SEO e leitores de tela; o terminal entrega a
+ * experiência visível (digitação de boot incluída).
  */
 export default function Hero() {
+  const prefersReduced = useReducedMotion()
+
   return (
     <section
       id="top"
@@ -16,39 +18,21 @@ export default function Hero() {
       className="px-[var(--spacing-gutter)] pt-14"
     >
       <div className="mx-auto flex min-h-[100svh] max-w-[var(--container-content)] flex-col justify-center py-[var(--spacing-section)]">
-        <div className="border-border bg-surface w-full rounded-md border p-5 font-mono text-sm break-words sm:p-8">
-          <p className="text-muted">
-            <span className="text-accent">dionel@portfolio</span>:~${' '}
-            <span className="text-text">whoami</span>
-          </p>
+        <h1 className="sr-only">
+          {profile.name} — {profile.title}
+        </h1>
 
-          <div className="mt-6">
-            <p className="text-muted text-xs tracking-widest uppercase">
-              Olá, eu sou
-            </p>
-            <h1 className="text-heading mt-2 text-4xl tracking-tight sm:text-5xl">
-              {profile.name}
-            </h1>
-            <p className="text-accent mt-3 text-lg sm:text-xl">
-              {profile.title}
-            </p>
-            <p className="text-text mt-5 max-w-2xl font-sans text-base leading-relaxed">
-              {tagline}
-            </p>
-          </div>
-
-          <p className="text-muted mt-8">
-            <span className="text-accent">dionel@portfolio</span>:~${' '}
-            <span
-              className="bg-accent ml-0.5 inline-block h-4 w-2.5 align-middle"
-              aria-hidden="true"
-            />
-          </p>
-        </div>
+        <motion.div
+          initial={prefersReduced ? false : { opacity: 0, y: 12 }}
+          animate={prefersReduced ? undefined : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: EASE_OUT }}
+        >
+          <Terminal />
+        </motion.div>
 
         <p className="text-muted mt-4 font-mono text-xs">
-          Dica: o terminal fica interativo já já — digite{' '}
-          <span className="text-text">help</span> para ver os comandos.
+          Dica: digite <span className="text-text">help</span> ou toque num
+          atalho acima.
         </p>
       </div>
     </section>
