@@ -24,7 +24,7 @@ evolui.
 ```
 .
 ├── public/
-│   └── favicon.svg              # Favicon (SVG + PNG fallback adicionados na Fase 6)
+│   └── favicon.svg              # Favicon SVG autoral (chevron > do prompt)
 ├── docs/
 │   ├── ARQUITETURA.md           # Este arquivo
 │   ├── DESIGN.md                # Direção visual e design tokens
@@ -77,8 +77,7 @@ evolui.
 └── package.json
 ```
 
-> A árvore acima é o **alvo planejado**. As pastas são criadas conforme cada
-> fase as introduz; nada de pastas vazias antecipadas.
+> A árvore acima reflete o estado atual do repositório após todas as fases concluídas.
 
 ---
 

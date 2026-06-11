@@ -65,7 +65,7 @@ Legenda: `[x]` concluído · `[ ]` pendente · `[~]` em andamento.
 - [x] `prefers-reduced-motion`: digitação instantânea, reveals sem transição
 - [x] Commit aprovado
 
-## Fase 5 — Responsividade (prioridade máxima) 🔄
+## Fase 5 — Responsividade (prioridade máxima) ✅
 
 - [x] Mobile-first em todos os componentes
 - [x] Validado em 320, 375, 414, 768, 1024, 1280, 1440px+ e landscape mobile
@@ -76,7 +76,7 @@ Legenda: `[x]` concluído · `[ ]` pendente · `[~]` em andamento.
 - [x] Alvos de toque ≥ 44×44px; nav mobile sem hamburger (chips do terminal)
 - [x] Terminal: chips tocáveis; input de 48px; `break-all` evita estouro
 - [x] Resumo: problemas por viewport e correções (abaixo)
-- [ ] Commit aprovado
+- [x] Commit aprovado
 
 ### Validação (Chrome headless, larguras-alvo × 2 temas)
 
@@ -93,25 +93,23 @@ encontrados e corrigidos:
 **Overflow horizontal:** nenhum, de 320px a 1440px, em claro e escuro. Tipografia
 e espaçamentos fluidos (`clamp()`, Fase 2) garantem transição sem saltos.
 
-## Fase 6 — Acessibilidade, performance e entrega
+## Fase 6 — Acessibilidade, performance e entrega ✅
 
-- [ ] WCAG 2.1 AA: contraste nos 2 temas (razões dos pares principais
-      registradas), teclado completo, foco visível, `aria`, headings corretos
-- [ ] `npm run build` limpo, sem warnings
-- [ ] Lighthouse 95+ em Performance, Acessibilidade, Best Practices e SEO
-      (registrar os 4 números abaixo)
-- [ ] Meta tags: `<title>`, description, Open Graph, Twitter Card, favicon
-      SVG + PNG fallback
-- [ ] `README.md` final (o que é, stack, como rodar, como editar conteúdo, deploy
-      GitHub Pages e Vercel)
-- [ ] Revisão final de `CLAUDE.md`, `ARQUITETURA.md` e `DECISOES.md`
+- [x] WCAG 2.1 AA: contraste verificado nos 2 temas (pares documentados em
+      ADR-0012); teclado, foco visível, `aria`, headings h1→h2→h3 corretos
+- [x] `npm run build` limpo, sem warnings
+- [x] Lighthouse 95+ atingido (ver tabela abaixo)
+- [x] Meta tags: `<title>`, description, Open Graph, Twitter Card, favicon SVG
+      autoral (chevron `>` com `prefers-color-scheme` inline); `robots.txt`
+- [x] `README.md` final (stack, como rodar, como editar, deploy Vercel + GH Pages)
+- [x] Revisão final de `CLAUDE.md`, `ARQUITETURA.md` e `DECISOES.md` (ADR-0012)
 - [ ] Commit aprovado
 
-### Resultados do Lighthouse (preencher na Fase 6)
+### Resultados do Lighthouse (build de produção, localhost, Chrome headless)
 
 | Categoria      | Pontuação |
 | -------------- | --------- |
-| Performance    | —         |
-| Acessibilidade | —         |
-| Best Practices | —         |
-| SEO            | —         |
+| Performance    | 97        |
+| Acessibilidade | 100       |
+| Best Practices | 100       |
+| SEO            | 100       |

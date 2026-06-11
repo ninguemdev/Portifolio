@@ -130,29 +130,23 @@ um resumo + o que vem a seguir. **Aguardar OK do Dionel antes de avançar.**
 
 ## Estado atual
 
-**Fases 0–4 concluídas.** Setup, documentação, direção **"Monolito"**, estrutura +
-temas, e agora o **terminal interativo** (peça-assinatura) com as animações.
+**Fases 0–6 concluídas. Portfólio pronto para deploy.**
 
-O terminal ([`src/components/terminal/`](src/components/terminal/)) tem os comandos
-`help`/`sobre`/`skills`/`projetos`/`contato`/`theme`/`clear`/`whoami`, `<input>`
-real com cursor de bloco piscando, histórico ↑/↓, digitação de boot na entrada,
-chips tocáveis e anúncio via região `aria-live` dedicada (a saída visual é
-`aria-hidden` para não narrar caractere a caractere). A fila de saída é uma máquina
-de estados num `useReducer`; a digitação vem de [`useTypewriter`](src/hooks/useTypewriter.ts).
-Animações com Motion: entrada do hero, [`Reveal`](src/components/ui/Reveal.tsx)
-on-scroll nas seções e micro-interações — tudo com fallback de `prefers-reduced-motion`.
+### O que foi feito
 
-**Revisões pós-Fase 4 (a pedido do Dionel):** tema escuro virou **preto e verde**
-(`#0A0C0A` / accent `#4ADE80`; claro segue vermelhão — accent por tema); **fundo
-ambiente** sutil animado (`.ambient`, cor base movida p/ `<html>`); título passou a
-**"Desenvolvedor Full Stack"** (sem "Júnior" — ele nunca atuou como dev, e não quer
-"estudante"). Ver ADR-0010.
+- **0–1:** Setup (Vite + React 19 + TS + Tailwind v4 + ESLint/Prettier) e documentação.
+- **2:** Direção de design **"Monolito"** — tokens de cor, tipografia fluida com `clamp()`.
+- **3:** Estrutura de página, seções, sistema de temas (store externo + anti-FOUC).
+- **4:** Terminal interativo — 8 comandos, `<input>` real, histórico ↑/↓, digitação de boot,
+  chips tocáveis, `aria-live`, Motion. Revisões: tema escuro **preto + verde** (`#0A0C0A`/
+  `#4ADE80`), fundo ambiente, título "Desenvolvedor Full Stack". (ADR-0010)
+- **5:** Responsividade — zero overflow 320→1440px, alvos de toque ≥44px,
+  nav mobile pelos chips do terminal, marca **dionel.ninguem**. (ADR-0011)
+- **6:** WCAG 2.1 AA (accent claro `#e5341b`→`#d02c13` para 4,97:1), meta tags
+  (description, OG, Twitter Card), favicon SVG autoral (chevron `>`), README.md. (ADR-0012)
 
-**Fase 5 (responsividade) concluída.** Zero overflow horizontal de 320px a 1440px
-nos dois temas (medido com Chrome headless). Alvos de toque ≥44px. No mobile, a nav
-de seções fica nos chips do terminal (header mostra só marca + toggle; âncoras a
-partir de `sm`). Marca virou **dionel.ninguem**. Ver ADR-0011.
+### Pendências de conteúdo (`[EDITAR]`)
 
-**Próximo: Fase 6** — acessibilidade (contraste WCAG dos 2 temas, teclado, foco,
-headings), performance e entrega (Lighthouse 95+, meta tags, README). **Atenção:**
-o bundle JS cresceu com o Motion (~106 KB gzip) — avaliar `LazyMotion`/code-split.
+- `src/data/profile.ts` — URL do LinkedIn
+- `src/data/projects.ts` — stack/repo/demo do Torneios UTFPR, Supernova Delivery e Bestia;
+  repo/demo do Portfólio (após deploy)

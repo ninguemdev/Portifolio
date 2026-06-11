@@ -164,6 +164,26 @@ reescritos — se uma decisão muda, adiciona-se uma nova que supera a anterior.
 - **Risco aceito:** flerta com o visual banido; mitigado pelos valores (tom, não
   neon) e pela sutileza. Pode ser intensificado depois se o Dionel quiser.
 
+## ADR-0012 — Contraste do accent claro e favicon autoral
+
+- **Contexto:** Auditoria WCAG 2.1 AA na Fase 6 revelou que o accent vermelhão
+  original (`#e5341b`) atingia apenas 4,16:1 sobre o fundo claro (`#fbfaf7`) —
+  abaixo do limiar de 4,5:1 para texto normal. O favicon do template Vite (roxo,
+  estilo da marca Vite) precisava ser substituído por uma peça autoral.
+- **Decisão (contraste):** Accent claro escurecido de `#e5341b` para `#d02c13`
+  (hsl(8°, 83%, 44%) vs hsl(7°, 77%, 50%) original) — mesmo matiz, 6 pp a menos
+  de lightness. Pares resultantes: accent/bg 4,97:1, accent/branco 5,18:1,
+  branco/accent 5,18:1. O verde do tema escuro (`#4ade80`) já passava em 11,26:1
+  — nenhuma alteração necessária.
+- **Decisão (favicon):** SVG 32×32 com fundo near-black (`#0a0c0a`) e o símbolo
+  `>` como _chevron_ em verde fósforo (`#4ade80`). Usa `@media (prefers-color-scheme: light)` dentro do SVG para trocar para vermelhão (`#d02c13`) em contextos
+  claros. O `>` é a marca visual do terminal — coerente com o conceito "Monolito"
+  e legível em todos os tamanhos de favicon (16 px a 512 px).
+- **Justificativa:** Diferença imperceptível de tom; conformidade com AA sem
+  sacrificar a personalidade do design. SVG favicon com media query interna evita
+  manter arquivos separados para dark/light e já está suportado em todos os
+  navegadores modernos.
+
 ## ADR-0011 — Navegação mobile pelos chips do terminal
 
 - **Contexto:** A regra é "nav mobile sem hamburger que esconda conteúdo". Com a
