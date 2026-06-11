@@ -22,7 +22,7 @@ export const projects: Project[] = [
       'ESLint',
     ],
     repoUrl: null, // [EDITAR] link do GitHub
-    demoUrl: 'https://utfpr-torneios.pages.dev/',
+    demoUrl: 'https://chaveia.pages.dev/',
   },
   {
     id: 'supernova-delivery',
