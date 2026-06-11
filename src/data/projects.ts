@@ -6,11 +6,11 @@ import type { Project } from '../types/content'
  */
 export const projects: Project[] = [
   {
-    id: 'torneios-utfpr',
-    name: 'Site de Torneios — UTFPR',
+    id: 'torneios-chaveia',
+    name: 'Site de Torneios — CHAVEIA',
     description:
-      'Plataforma web para gerenciamento e exibição de torneios ' +
-      'universitários na UTFPR.',
+      'Plataforma web para criação, gerenciamento e acompanhamento ' +
+      'de torneios — chaves, resultados e classificações em tempo real.',
     stack: [
       'React 19',
       'TypeScript',
