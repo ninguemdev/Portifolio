@@ -9,7 +9,8 @@ export const profile: Profile = {
   title: 'Desenvolvedor Full Stack',
 
   bio:
-    'Desenvolvedor Full Stack que leva arquitetura a sério: domínio separado da ' +
+    'Cursando Bacharelado em Sistemas de Informação na UTFPR desde 2023, sou um ' +
+    'desenvolvedor Full Stack que leva arquitetura a sério: domínio separado da ' +
     'UI, segurança validada no banco e não só na interface, SQL escrito à mão ' +
     'por escolha. Construo aplicações web com React, TypeScript e Astro, ' +
     'integradas a PostgreSQL, MySQL e MongoDB. No back, Django e .NET Core. Fora ' +
@@ -39,6 +40,12 @@ export const profile: Profile = {
       label: 'LinkedIn',
       href: null, // [EDITAR] adicionar URL do LinkedIn
       display: 'LinkedIn',
+    },
+    {
+      id: 'itchio',
+      label: 'itch.io',
+      href: 'https://ninguemdev.itch.io/',
+      display: 'ninguemdev.itch.io',
     },
     {
       id: 'email',

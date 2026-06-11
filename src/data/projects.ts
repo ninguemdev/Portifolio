@@ -11,9 +11,18 @@ export const projects: Project[] = [
     description:
       'Plataforma web para gerenciamento e exibição de torneios ' +
       'universitários na UTFPR.',
-    stack: null, // [EDITAR] tecnologias usadas
+    stack: [
+      'React 19',
+      'TypeScript',
+      'Vite',
+      'CSS puro',
+      'Supabase',
+      'PostgreSQL',
+      'PL/pgSQL',
+      'ESLint',
+    ],
     repoUrl: null, // [EDITAR] link do GitHub
-    demoUrl: null, // [EDITAR] link ao vivo (ou manter null se não houver)
+    demoUrl: 'https://utfpr-torneios.pages.dev/',
   },
   {
     id: 'supernova-delivery',
@@ -23,7 +32,7 @@ export const projects: Project[] = [
       'espacial.',
     stack: ['Unity', 'C#'],
     repoUrl: null, // [EDITAR] link do GitHub
-    demoUrl: null, // [EDITAR] itch.io ou link de build
+    demoUrl: 'https://ninguemdev.itch.io/supernova-delivery',
     demoLabel: 'Jogar / Download',
   },
   {
@@ -32,9 +41,9 @@ export const projects: Project[] = [
     description:
       'Site de apresentação do livro "Bestia", com visual alinhado à ' +
       'identidade da obra.',
-    stack: null, // [EDITAR] tecnologias usadas
+    stack: ['Astro 6.4', 'TypeScript', 'CSS puro', 'Web Audio API', 'MDX'],
     repoUrl: null, // [EDITAR] link do GitHub
-    demoUrl: null, // [EDITAR] link ao vivo
+    demoUrl: 'https://bestia-site.pages.dev/',
   },
   {
     id: 'portfolio',
@@ -44,6 +53,6 @@ export const projects: Project[] = [
       'interativo. Este projeto.',
     stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Motion'],
     repoUrl: null, // [EDITAR] link do GitHub após publicar
-    demoUrl: null, // [EDITAR] link ao vivo após deploy
+    demoUrl: 'https://dionel.site/',
   },
 ]

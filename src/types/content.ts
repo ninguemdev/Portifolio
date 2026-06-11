@@ -7,7 +7,7 @@
 /** Link social/contato (ex.: GitHub, LinkedIn). `href` nulo = ainda não definido. */
 export type SocialLink = {
   /** Identificador estável usado em listas. */
-  id: 'github' | 'linkedin' | 'email'
+  id: 'github' | 'linkedin' | 'itchio' | 'email'
   /** Rótulo legível (ex.: "GitHub"). */
   label: string
   /** URL completa (ou `mailto:`); `null` enquanto pendente de definição. */

@@ -18,7 +18,7 @@ const bootLines: Array<Omit<TerminalLine, 'id'>> = [
   { kind: 'system', text: 'Desenvolvedor Full Stack.' },
   {
     kind: 'output',
-    text: 'Digite "help" para ver os comandos, ou toque num atalho acima.',
+    text: 'Digite "help" para ver os comandos, ou toque num atalho abaixo.',
   },
 ]
 

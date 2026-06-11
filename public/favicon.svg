@@ -1,15 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <style>
-    .bg   { fill: #0a0c0a }
-    .mark { stroke: #4ade80 }
-    @media (prefers-color-scheme: light) {
-      .bg   { fill: #1a1a1a }
-      .mark { stroke: #d02c13 }
+    .bg  { fill: #f5f5f5 }
+    .grn { fill: #4ade80 }
+    .drk { fill: #111111 }
+    @media (prefers-color-scheme: dark) {
+      .bg  { fill: #0a0c0a }
+      .drk { fill: #d0d0d0 }
     }
   </style>
-  <rect class="bg" width="32" height="32" rx="6"/>
-  <!-- chevron > — prompt do terminal -->
-  <path class="mark" d="M9 9l12 7-12 7"
-        fill="none" stroke-width="3.5"
-        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect class="bg" width="100" height="100"/>
+
+  <!-- Letra D: forma exterior + contraforme interior (fill-rule=evenodd) -->
+  <path class="grn" fill-rule="evenodd" d="
+    M 7 13 L 7 87 L 22 87 Q 53 87 53 50 Q 53 13 22 13 Z
+    M 20 26 Q 39 26 39 50 Q 39 74 20 74 Z
+  "/>
+
+  <!-- Letra N: barra esquerda + diagonal (verde) + barra direita (escura) -->
+  <rect class="grn" x="55" y="13" width="10" height="74"/>
+  <polygon class="grn" points="65,13 76,13 82,87 71,87"/>
+  <rect class="drk" x="82" y="13" width="11" height="74"/>
 </svg>
