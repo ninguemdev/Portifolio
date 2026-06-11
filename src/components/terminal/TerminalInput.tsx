@@ -1,4 +1,10 @@
-import { useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type KeyboardEvent,
+} from 'react'
 import { PROMPT } from './commands'
 import { useCommandHistory } from '../../hooks/useCommandHistory'
 
@@ -15,6 +21,14 @@ export default function TerminalInput({
   const [value, setValue] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
   const history = useCommandHistory()
+
+  // Foca automaticamente no desktop (pointer: fine = mouse/trackpad) para que
+  // o visitante já possa digitar sem clicar — sem interferir no mobile/touch.
+  useEffect(() => {
+    if (window.matchMedia('(pointer: fine)').matches) {
+      inputRef.current?.focus()
+    }
+  }, [])
 
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.key === 'ArrowUp') {
@@ -40,17 +54,17 @@ export default function TerminalInput({
         className="border-border focus-within:border-accent focus-within:ring-accent relative flex min-h-12 items-center gap-2 rounded-md border px-3 py-2 transition-colors focus-within:ring-1"
       >
         <span
-          className="text-accent shrink-0 font-mono text-sm"
+          className="text-accent shrink-0 select-none font-mono text-sm"
           aria-hidden="true"
         >
           {PROMPT}
         </span>
-        <span className="text-text min-w-0 flex-1 font-mono text-sm break-all whitespace-pre-wrap">
+        <span className="text-text min-w-0 flex-1 select-none font-mono text-sm break-all whitespace-pre-wrap">
           {value}
           <span className="terminal-cursor" aria-hidden="true" />
         </span>
-        {/* Input real cobrindo todo o campo: caret nativo oculto, alvo de toque
-            de 44px (inset-0 sobre o campo, não só sobre o texto). */}
+        {/* Input real cobrindo todo o campo: selection transparente evita o
+            glitch visual do Ctrl+A; caret nativo oculto; alvo de toque 44px. */}
         <input
           ref={inputRef}
           value={value}
@@ -61,7 +75,7 @@ export default function TerminalInput({
           autoCapitalize="off"
           autoCorrect="off"
           spellCheck={false}
-          className="absolute inset-0 h-full w-full bg-transparent font-mono text-sm text-transparent caret-transparent outline-none"
+          className="absolute inset-0 h-full w-full bg-transparent font-mono text-sm text-transparent caret-transparent outline-none selection:bg-transparent"
         />
       </div>
     </form>
