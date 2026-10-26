@@ -144,9 +144,10 @@ um resumo + o que vem a seguir. **Aguardar OK do Dionel antes de avançar.**
   nav mobile pelos chips do terminal, marca **dionel.ninguem**. (ADR-0011)
 - **6:** WCAG 2.1 AA (accent claro `#e5341b`→`#d02c13` para 4,97:1), meta tags
   (description, OG, Twitter Card), favicon SVG autoral (chevron `>`), README.md. (ADR-0012)
+- **Pós-deploy:** projetos atualizados — saíram Bestia e Portfólio, entraram EDEN
+  (destaque, linha própria no grid), PENSHOW e Comicle. (ADR-0013)
 
 ### Pendências de conteúdo (`[EDITAR]`)
 
 - `src/data/profile.ts` — URL do LinkedIn
-- `src/data/projects.ts` — stack/repo/demo do Torneios UTFPR, Supernova Delivery e Bestia;
-  repo/demo do Portfólio (após deploy)
+- `src/data/projects.ts` — repo do Torneios CHAVEIA e do Supernova Delivery

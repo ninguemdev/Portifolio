@@ -6,10 +6,23 @@ import type { Project } from '../../types/content'
  */
 export default function ProjectCard({ project }: { project: Project }) {
   const hasLinks = project.repoUrl !== null || project.demoUrl !== null
+  const { featured } = project
 
   return (
-    <article className="border-border bg-surface hover:border-accent flex h-full flex-col rounded-md border p-6 transition-[transform,border-color] duration-200 hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
-      <h3 className="text-heading text-xl tracking-tight">{project.name}</h3>
+    <article
+      className={`bg-surface flex h-full flex-col rounded-md border p-6 transition-[transform,border-color] duration-200 hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${
+        featured ? 'border-accent md:p-8' : 'border-border hover:border-accent'
+      }`}
+    >
+      {featured && (
+        <p className="text-accent mb-2 font-mono text-sm">$ destaque</p>
+      )}
+
+      <h3
+        className={`text-heading tracking-tight ${featured ? 'text-2xl' : 'text-xl'}`}
+      >
+        {project.name}
+      </h3>
 
       <p className="text-muted mt-3 flex-1 leading-relaxed">
         {project.description}

@@ -202,3 +202,23 @@ reescritos — se uma decisão muda, adiciona-se uma nova que supera a anterior.
 - **Validação:** medição automatizada com Chrome headless (puppeteer-core, depois
   removido) em 320/375/414/768/1024/1280/1440px nos dois temas — zero overflow,
   alvos de toque ≥44px. Metodologia registrada no ROADMAP (Fase 5).
+
+## ADR-0013 — Projeto em destaque no grid de #projetos
+
+- **Contexto:** Atualização de conteúdo pós-deploy trocou Bestia e Portfólio por
+  três projetos novos (EDEN, PENSHOW, Comicle), totalizando 5. O Dionel pediu
+  que o EDEN — o projeto mais interessante do momento — ficasse em destaque,
+  sozinho numa linha, com os outros quatro em duas linhas de dois.
+- **Opções:** (a) campo `featured?: boolean` no tipo `Project`, que o
+  `ProjectCard` usa para um tratamento visual distinto e que o `<li>` do grid usa
+  para `md:col-span-2`; (b) componente `FeaturedProjectCard` separado; (c)
+  reordenar o array e aplicar `col-span` por índice fixo no componente da seção.
+- **Decisão:** (a) — campo `featured` no dado do projeto.
+- **Justificativa:** Mantém a regra "editar conteúdo = editar dados, nunca
+  JSX" (quem muda o destaque é `src/data/projects.ts`, não o componente). Um
+  componente separado duplicaria a estrutura do cartão para uma diferença só de
+  estilo; destacar por índice acoplaria o layout à ordem do array, frágil a
+  reordenações futuras. O destaque em si é sutil e consistente com o resto do
+  design: borda `accent` persistente (em vez de só no hover), rótulo `$ destaque`
+  no mesmo estilo mono do cabeçalho de seção, e título maior — sem cor ou
+  elemento novo no sistema de tokens.

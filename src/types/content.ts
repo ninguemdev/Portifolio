@@ -47,4 +47,6 @@ export type Project = {
   demoUrl: string | null
   /** Rótulo do link de demo (ex.: "Ver ao vivo", "Download"). */
   demoLabel?: string
+  /** Projeto de destaque — ocupa a linha inteira do grid e ganha realce visual. */
+  featured?: boolean
 }

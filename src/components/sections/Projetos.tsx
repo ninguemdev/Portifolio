@@ -12,7 +12,10 @@ export default function Projetos() {
     >
       <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {projects.map((project) => (
-          <li key={project.id}>
+          <li
+            key={project.id}
+            className={project.featured ? 'md:col-span-2' : ''}
+          >
             <ProjectCard project={project} />
           </li>
         ))}

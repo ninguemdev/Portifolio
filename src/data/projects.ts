@@ -2,9 +2,23 @@ import type { Project } from '../types/content'
 
 /**
  * Projetos exibidos na seção #projetos. Campos `null` são pendências marcadas
- * com [EDITAR]: preencha a stack e os links conforme forem definidos.
+ * com [EDITAR]: preencha a stack e os links conforme forem definidos. O
+ * primeiro projeto (`featured: true`) ocupa a linha inteira do grid.
  */
 export const projects: Project[] = [
+  {
+    id: 'eden',
+    name: 'EDEN',
+    description:
+      'Laboratório visual de vida artificial: uma população de criaturas ' +
+      'evolui redes neurais por gerações numa arena 2D determinística, ' +
+      'onde comportamentos emergem, se espalham ou desaparecem conforme ' +
+      'cérebro e corpo passam de geração em geração.',
+    stack: ['Unity 6', 'C#', 'URP'],
+    repoUrl: 'https://github.com/ninguemdev/EDEN',
+    demoUrl: null,
+    featured: true,
+  },
   {
     id: 'torneios-chaveia',
     name: 'Site de Torneios — CHAVEIA',
@@ -36,23 +50,36 @@ export const projects: Project[] = [
     demoLabel: 'Jogar / Download',
   },
   {
-    id: 'bestia',
-    name: 'Bestia',
+    id: 'penshow',
+    name: 'PENSHOW',
     description:
-      'Site de apresentação do livro "Bestia", com visual alinhado à ' +
-      'identidade da obra.',
-    stack: ['Astro 6.4', 'TypeScript', 'CSS puro', 'Web Audio API', 'MDX'],
-    repoUrl: null, // [EDITAR] link do GitHub
-    demoUrl: 'https://bestia-site.pages.dev/',
+      'Jogo multiplayer de perguntas e respostas em português, para 2 a ' +
+      '12 jogadores pelo navegador — salas por convite, avatares ' +
+      'customizáveis e cinco fases até uma final decidida por vidas.',
+    stack: [
+      'TypeScript',
+      'React',
+      'Vite',
+      'Zustand',
+      'Fastify',
+      'Socket.IO',
+      'Zod',
+    ],
+    repoUrl: null,
+    demoUrl: 'https://dionel.site/penshow/',
+    demoLabel: 'Jogar',
   },
   {
-    id: 'portfolio',
-    name: 'Portfólio',
+    id: 'comicle',
+    name: 'Comicle',
     description:
-      'Site de portfólio pessoal — one-page, dark/light mode e terminal ' +
-      'interativo. Este projeto.',
-    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Motion'],
-    repoUrl: null, // [EDITAR] link do GitHub após publicar
-    demoUrl: 'https://dionel.site/',
+      'Jogo multiplayer para criar histórias em quadrinhos coletivas: ' +
+      'cada jogador lê os quadros anteriores, memoriza e desenha a ' +
+      'continuação sem poder olhar de novo — a graça é ver como a ' +
+      'memória do grupo transforma a história.',
+    stack: ['TypeScript', 'React', 'Fastify', 'PostgreSQL', 'Socket.IO'],
+    repoUrl: null,
+    demoUrl: 'https://dionel.site/comicle/',
+    demoLabel: 'Jogar',
   },
 ]
