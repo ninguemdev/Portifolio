@@ -9,6 +9,7 @@ export const projects: Project[] = [
   {
     id: 'eden',
     name: 'EDEN',
+    tagline: 'Evolutionary Digital Ecosystem Network',
     description:
       'Laboratório visual de vida artificial: uma população de criaturas ' +
       'evolui redes neurais por gerações numa arena 2D determinística, ' +

@@ -24,6 +24,12 @@ export default function ProjectCard({ project }: { project: Project }) {
         {project.name}
       </h3>
 
+      {project.tagline && (
+        <p className="text-muted mt-1 font-mono text-xs tracking-wide uppercase">
+          {project.tagline}
+        </p>
+      )}
+
       <p className="text-muted mt-3 flex-1 leading-relaxed">
         {project.description}
       </p>

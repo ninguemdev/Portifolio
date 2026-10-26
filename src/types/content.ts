@@ -49,4 +49,6 @@ export type Project = {
   demoLabel?: string
   /** Projeto de destaque — ocupa a linha inteira do grid e ganha realce visual. */
   featured?: boolean
+  /** Subtítulo curto sob o nome (ex.: o significado de uma sigla). */
+  tagline?: string
 }
